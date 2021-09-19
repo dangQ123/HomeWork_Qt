@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>GameSouce/Mario_map.png</file>
+        <file>GameSouce/player.png</file>
+    </qresource>
+</RCC>
