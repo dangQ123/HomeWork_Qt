@@ -35,7 +35,8 @@ HEADERS += \
     config.h \
     gameobject.h \
     map.h \
-    player.h
+    player.h \
+    lookme.h
 
 RESOURCES += \
     res.qrc

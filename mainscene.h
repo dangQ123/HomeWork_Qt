@@ -3,8 +3,10 @@
 
 #include <QWidget>
 #include"player.h"
-#include"map.h"
 #include<QTimer>
+#include<QKeyEvent>
+#include"config.h"
+#include"map.h"
 
 class MainScene : public QWidget
 {
@@ -12,18 +14,25 @@ class MainScene : public QWidget
 
 public:
     MainScene(QWidget *parent = 0);
-
-    Player player;
-    Map map;
-    QTimer timer;
+    ~MainScene();
+    void playerGame();
 
     void paintEvent(QPaintEvent *event);
+
+
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void timerEvent(QTimerEvent *);
 
-    void initMainScene();
-    void playGame();
+    Player player;
+    QTimer timer;
+    Map map;
 
-    ~MainScene();
+    int count;
+
+
+private :
+bool PressFlag=false;//按键形式
 
 };
 

@@ -1,6 +1,23 @@
 <RCC>
-    <qresource prefix="/">
-        <file>GameSouce/Mario_map.png</file>
-        <file>GameSouce/player.png</file>
+    <qresource prefix="/PlayWalk">
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(0).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(1).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(2).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(3).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(4).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(5).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(6).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(7).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(8).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(9).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(10).png</file>
+        <file>GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(11).png</file>
+    </qresource>
+    <qresource prefix="/Map">
+        <file>GameSouce/background/2/background.png</file>
+        <file>GameSouce/background/1/background.png</file>
+    </qresource>
+    <qresource prefix="/Pad">
+        <file>GameSouce/jumpPad/Pads/Pad_04_1.png</file>
     </qresource>
 </RCC>

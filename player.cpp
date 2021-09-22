@@ -1,20 +1,51 @@
 #include "player.h"
-#include<qmath.h>
-#include"config.h"
-#include<QPoint>
+#include<QTimer>
+#include<QWidget>
+#include<QDebug>
 
 Player::Player()
 {
-    this->set_width(50);
-    this->set_height(100);
-    this->set_r(111);
-    this->set_pos(QPoint(GAME_WIDTH/2,GAME_HEIGHT-this->get_height()));
-    this->set_pixmap(PLAYER_PATH);
+    p_x = 50;
+    p_y = 100;
+    //竖直方向下的加速度
+    gravity = 0.8;
+    //速度都为零
+    p_vx = 0, p_vy = 0;
+
 }
 
-void Player::walk(double distance)
+void Player::walkHor(double speed)
 {
-    QPoint pos=this->get_pos();
-    pos.setX(this->get_pos().x()+distance);
-    this->set_pos(pos);
+    p_vx = speed;
 }
+void Player::walkVer(double speed)
+{
+    qDebug()<<"跳了";
+    p_vy = speed;
+}
+
+void Player::rightWalkPixmap()
+{
+    int i;
+    for(i=0;i<11;i++)
+    {
+        QString path=QString(":/PlayWalk/GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(%1).png").arg(i);
+        this->pixmap[i].load(path);
+    }
+}
+
+void Player::leftWalkPixmap()
+{
+    int i;
+    for(i=0;i<11;i++)
+    {
+        QString path=QString(":/PlayWalk/GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(%1).png").arg(i);
+        this->pixmap[i].load(path);
+    }
+    for(i=0;i<11;i++)
+    {
+        QImage mirror=this->pixmap[i].toImage();
+        this->pixmap[i]=QPixmap::fromImage(mirror.mirrored(true,false));
+    }
+}
+
