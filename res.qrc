@@ -20,4 +20,104 @@
     <qresource prefix="/Pad">
         <file>GameSouce/jumpPad/Pads/Pad_04_1.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>GameSouce/music/jump.wav</file>
+        <file>GameSouce/music/background/BGM1.mp3</file>
+    </qresource>
+    <qresource prefix="/enemy/close/walk">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(11).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(12).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(13).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(14).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(15).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(16).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Walking/monsterCloseWalk(17).png</file>
+    </qresource>
+    <qresource prefix="/enemy/close/walkmirror">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(11).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(12).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(13).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(14).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(15).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(16).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/WalkingMirror/monsterCloseWalkMirror(17).png</file>
+    </qresource>
+    <qresource prefix="/enemy/close/attack">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/Attacking/attackClose(11).png</file>
+    </qresource>
+    <qresource prefix="/enemy/close/attackmirror">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/AttackMirror/attackCloseMirror(11).png</file>
+    </qresource>
+    <qresource prefix="/enemy/close/underattack">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttack/underAttackClose(11).png</file>
+    </qresource>
+    <qresource prefix="/enemy/close/underattackmirror">
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(0).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(1).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(2).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(3).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(4).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(5).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(6).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(7).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(8).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(9).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(10).png</file>
+        <file>GameSouce/enemy/PNG/Minotaur_01/PNG Sequences/underAttackMirror/underAttackClose(11).png</file>
+    </qresource>
 </RCC>

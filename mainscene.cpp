@@ -3,6 +3,9 @@
 #include<QTimer>
 #include<QDebug>
 #include"config.h"
+#include<audio.h>
+#include<QMediaPlayer>
+
 //页面大小
 int Width = GAME_WIDTH;
 int Height = GAME_HEIGHT;
@@ -20,11 +23,14 @@ MainScene::MainScene(QWidget *parent)
     this->player.rightWalkPixmap();
     timer.setInterval(Interval);
     playerGame();
-
     player.isOnFloor = 1;//在地
+    this->startTimer(GAME_FPS);//每0.03秒运行一次timerEvent函数
+    //背景音乐
+    MusicPlay.playBGM();
 
-    this->startTimer(GAME_FPS);//每50秒运行一次timerEvent函数
-    qDebug()<<this->map.gameobject[0].pos.y();
+    this->map.addMonsterClose(GAME_WIDTH-150,GAME_HEIGHT-250);
+    //this->map.addMonsterClose(50,GAME_HEIGHT-250);
+    //qDebug()<<this->map.monsterClose[0]->getPos_y();
 
 }
 
@@ -42,6 +48,10 @@ void MainScene::playerGame()
         count++;
         if(count==10)
             count=0;
+        addCountOfMonsterCloseInMap(this->map);
+        this->allMonsterCloseMoveInMap(this->map);
+        qDebug()<<"health="<<this->map.monsterClose[0]->getHeath();
+
     }
                 );
 }
@@ -91,9 +101,15 @@ void MainScene::keyPressEvent(QKeyEvent *event)
         {   //按下
             player.walkVer(-20);
             player.isOnFloor = 0;//不在地
-            player.isjumpshort = 1;
+            player.isOnPlat = 0;
+
+            //跳跃音乐
+            MusicPlay.playJump();
         }
         break;
+        case Qt::Key_J:
+            this->map.monsterClose[0]->setHeath(this->map.monsterClose[0]->getHeath()-1);
+            this->map.monsterClose[0]->underAttack();
         default: break;
     }
     //QWidget::keyPressEvent(event);
@@ -145,6 +161,7 @@ void MainScene::keyReleaseEvent(QKeyEvent *event)
             player.isjumpshort = 0;
         }
         break;
+
         default: break;
     }
 }
@@ -166,6 +183,37 @@ void MainScene::paintEvent(QPaintEvent *event)
     }
 
     painter.drawPixmap(this->player.p_x,this->player.p_y,PLAY_WIDTH,PLAY_HEIGHT,player.pixmap[count]);
+    for(i=0;i<this->map.numOfMonsterClose;i++)
+    {
+        qDebug()<<"isInWalk="<<map.monsterClose[0]->isInWalk
+               <<" isInAttack="<<map.monsterClose[0]->isInAttack
+              <<" isUnderAttack="<<map.monsterClose[0]->isUnderAttack;  //测试怪物所处状态
+
+        if(this->map.monsterClose[i]->isInWalk)
+            painter.drawPixmap(this->map.monsterClose[i]->getPos_x(),
+                           this->map.monsterClose[i]->getPos_y(),
+                           MOSTER_WIDTH,MOSTER_HEIGHT,
+                           this->map.monsterClose[i]->walkPixmaps[this->map.monsterClose[i]->walkCount]
+                           );
+        else if(this->map.monsterClose[i]->isInAttack)
+            painter.drawPixmap(this->map.monsterClose[i]->getPos_x(),
+                               this->map.monsterClose[i]->getPos_y(),
+                               MOSTER_WIDTH,MOSTER_HEIGHT,
+                               this->map.monsterClose[i]->attackPixmaps[this->map.monsterClose[i]->attackCount]
+                               );
+        else if(this->map.monsterClose[i]->isUnderAttack)
+            painter.drawPixmap(this->map.monsterClose[i]->getPos_x(),
+                               this->map.monsterClose[i]->getPos_y(),
+                               MOSTER_WIDTH,MOSTER_HEIGHT,
+                               this->map.monsterClose[i]->underAttackPixmaps[this->map.monsterClose[i]->underAttackCount]
+                               );
+        else
+            painter.drawPixmap(this->map.monsterClose[i]->getPos_x(),
+                               this->map.monsterClose[i]->getPos_y(),
+                               MOSTER_WIDTH,MOSTER_HEIGHT,
+                               this->map.monsterClose[i]->nothing
+                               );
+    }
 }
 //核心
 void MainScene::timerEvent(QTimerEvent *e)
@@ -176,7 +224,56 @@ void MainScene::timerEvent(QTimerEvent *e)
     this->map.examAllGameObject(this->player);
     if(player.p_y>=GAME_HEIGHT-200)
         player.p_y=GAME_HEIGHT-200;
-    qDebug()<<player.p_y;
+
 }
+
+void MainScene::addCountOfMonsterCloseInMap(Map &map)
+{
+    int i;
+    for(i=0;i<map.numOfMonsterClose;i++)
+    {
+        //qDebug()<<"isInWalk="<<map.monsterClose[i]->isInWalk<<"isInAttack="<<map.monsterClose[i]->isInAttack;
+        if(map.monsterClose[i]->isInWalk)
+        {
+            map.monsterClose[i]->addCount(map.monsterClose[i]->walkCount,18);
+        }
+        else if(map.monsterClose[i]->isInAttack)
+        {
+            map.monsterClose[i]->addCount(map.monsterClose[i]->attackCount,12);
+        }
+        else if(map.monsterClose[i]->isUnderAttack)
+        {
+            map.monsterClose[i]->addCount(map.monsterClose[i]->underAttackCount,12);
+            if(map.monsterClose[i]->underAttackCount==11)
+            {
+                map.monsterClose[i]->isInWalk=1;
+                map.monsterClose[i]->isInAttack=0;
+                map.monsterClose[i]->isUnderAttack=0;
+            }
+
+        }
+    }
+}
+
+void MainScene::allMonsterCloseMoveInMap(Map &map)
+{
+    int i;
+    for(i=0;i<map.numOfMonsterClose;i++)
+    {
+        map.monsterClose[i]->moveMonsterClose(this->player);
+        map.monsterClose[i]->setWalkPixmaps(map.monsterClose[i]->getFaceTo());
+        if(map.monsterClose[i]->getHeath()<map.monsterClose[i]->maxHealth)
+        {
+            map.monsterClose[i]->underAttack();
+            map.monsterClose[i]->maxHealth=map.monsterClose[i]->getHeath();
+        }
+        if(map.monsterClose[i]->isDead())
+        {
+            //delete map.monsterClose[i];           //清除对应的怪物
+        }
+
+    }
+}
+
 
 

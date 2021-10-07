@@ -7,6 +7,7 @@
 #include<QKeyEvent>
 #include"config.h"
 #include"map.h"
+#include<audio.h>
 
 class MainScene : public QWidget
 {
@@ -30,6 +31,10 @@ public:
 
     int count;
 
+    //设置音乐
+    Audio MusicPlay;
+    void addCountOfMonsterCloseInMap(Map& map);
+    void allMonsterCloseMoveInMap(Map& map);
 
 private :
 bool PressFlag=false;//按键形式

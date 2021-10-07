@@ -1,0 +1,12 @@
+INPUT(
+./debug\qrc_res.o
+./debug\main.o
+./debug\mainscene.o
+./debug\gameobject.o
+./debug\map.o
+./debug\player.o
+./debug\audio.o
+./debug\monster.o
+./debug\monsterclose.o
+./debug\moc_mainscene.o
+);

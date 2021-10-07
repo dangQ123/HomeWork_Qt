@@ -9,6 +9,8 @@ class Player
 {
 
 public:
+int health=500;   //初始设定健康值
+
 //判断是否在地板上
 int isOnFloor;
 //判断是否在平台上

@@ -28,9 +28,26 @@ GameObject::GameObject(QPoint _pos, double _width, double _height)
 
 bool GameObject::isColid(Player &player)
 {
-    if(this->get_pos().x()<player.p_x+PLAY_WIDTH-100&&
+    if(player.p_vy > 15&&
+            this->get_pos().x()<player.p_x+PLAY_WIDTH-100&&
             this->get_pos().x()-100+this->get_width()>player.p_x&&
-            fabs(player.p_y+PLAY_HEIGHT-this->get_pos().y()-100)<=10)
+            fabs(player.p_y+PLAY_HEIGHT-this->get_pos().y()-100 + 10)<=17)
+    {
+        //qDebug()<<"发生碰撞";
+        return true;
+    }
+    else if(player.p_vy > 10&&
+            this->get_pos().x()<player.p_x+PLAY_WIDTH-100&&
+            this->get_pos().x()-100+this->get_width()>player.p_x&&
+            fabs(player.p_y+PLAY_HEIGHT-this->get_pos().y()-100 + 10)<=12)
+    {
+        //qDebug()<<"发生碰撞";
+        return true;
+    }
+    else if(this->get_pos().x()<player.p_x+PLAY_WIDTH-100&&
+            this->get_pos().x()-100+this->get_width()>player.p_x&&
+            fabs(player.p_y+PLAY_HEIGHT-this->get_pos().y()-100 + 10)<=8&&
+            player.p_vy > 0)
     {
         //qDebug()<<"发生碰撞";
         return true;

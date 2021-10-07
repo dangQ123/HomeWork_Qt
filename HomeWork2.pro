@@ -6,6 +6,8 @@
 
 QT       += core gui
 
+
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = HomeWork2
@@ -22,13 +24,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+QT       += multimedia
 
 SOURCES += \
         main.cpp \
         mainscene.cpp \
     gameobject.cpp \
     map.cpp \
-    player.cpp
+    player.cpp \
+    audio.cpp \
+    monster.cpp \
+    monsterclose.cpp
 
 HEADERS += \
         mainscene.h \
@@ -36,7 +42,11 @@ HEADERS += \
     gameobject.h \
     map.h \
     player.h \
-    lookme.h
+    lookme.h \
+    audio.h \
+    monster.h \
+    monsterclose.h
 
 RESOURCES += \
     res.qrc
+CONFIG+=resources_big

@@ -1,0 +1,12 @@
+INPUT(
+./release\qrc_res.o
+./release\main.o
+./release\mainscene.o
+./release\gameobject.o
+./release\map.o
+./release\player.o
+./release\audio.o
+./release\monster.o
+./release\monsterclose.o
+./release\moc_mainscene.o
+);

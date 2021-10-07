@@ -20,7 +20,6 @@ void Player::walkHor(double speed)
 }
 void Player::walkVer(double speed)
 {
-    qDebug()<<"跳了";
     p_vy = speed;
 }
 
@@ -36,12 +35,9 @@ void Player::rightWalkPixmap()
 
 void Player::leftWalkPixmap()
 {
+    rightWalkPixmap();
     int i;
-    for(i=0;i<11;i++)
-    {
-        QString path=QString(":/PlayWalk/GameSouce/PNG/Wraith_03/PNG Sequences/Walking/PlayerWalk(%1).png").arg(i);
-        this->pixmap[i].load(path);
-    }
+
     for(i=0;i<11;i++)
     {
         QImage mirror=this->pixmap[i].toImage();
