@@ -143,7 +143,8 @@ void MonsterClose::moveMonsterClose(Player&player)      //AI函数
 
 void MonsterClose::attack(Player& player)   //直接命中
 {
-    player.health-=1;
+    if(this->attackCount==11)
+        player.health-=1;
     isInAttack=1;
     isInWalk=0;
 }

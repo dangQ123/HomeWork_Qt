@@ -7,6 +7,7 @@
 #include"gameobject.h"
 #include"player.h"
 #include"monsterclose.h"
+#include"boss.h"
 
 class Map
 {
@@ -32,6 +33,10 @@ public:
     int numOfMonsterClose=0;
     MonsterClose *monsterClose[20];
     void addMonsterClose(double pos_x,double pos_y);
+
+    void checkAllAttack(Player &player);
+
+    Boss *boss;
 
 
 private:

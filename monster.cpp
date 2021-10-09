@@ -4,7 +4,7 @@ Monster::Monster()
 {
     this->pos_x=GAME_WIDTH/2;
     faceTo=FACE::toLeft;
-    heath=3;    //默认生命值为3
+    heath=15;    //默认生命值为3
 }
 
 Monster::Monster(double _x, double _y, int _faceTo,int _heath)

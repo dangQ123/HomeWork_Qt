@@ -92,6 +92,29 @@ void Map::addMonsterClose(double pos_x, double pos_y)
     numOfMonsterClose++;
 }
 
+void Map::checkAllAttack(Player& player)
+{
+    int i;
+    for(i=0;i<this->numOfMonsterClose;i++)
+    {
+        if(fabs(player.p_x-this->monsterClose[i]->getPos_x())<=150&&fabs(player.p_y-this->monsterClose[i]->getPos_y())<=150)
+        {
+            this->monsterClose[i]->setHeath(this->monsterClose[i]->getHeath()-1);
+            this->monsterClose[i]->isUnderAttack=1;
+        }
+    }
+    if(fabs(player.p_x-this->boss->posX)<=150&&fabs(player.p_y-this->boss->posY)<=150)
+    {
+        this->boss->health--;
+        qDebug()<<"boss血量="<<this->boss->health;
+    }
+    //判断boss是否死亡
+    if(this->boss->health<=0)
+    {
+        this->boss->dying();
+    }
+}
+
 
 
 

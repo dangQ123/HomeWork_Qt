@@ -29,9 +29,12 @@ MainScene::MainScene(QWidget *parent)
     MusicPlay.playBGM();
 
     this->map.addMonsterClose(GAME_WIDTH-150,GAME_HEIGHT-250);
+    this->map.addMonsterClose(25,GAME_HEIGHT-250);
     //this->map.addMonsterClose(50,GAME_HEIGHT-250);
-    //qDebug()<<this->map.monsterClose[0]->getPos_y();
+    //qDebug()<<this->player.face;
 
+    this->map.boss=new Boss(GAME_WIDTH/2-200,GAME_HEIGHT-350);    //可在前面设置生成条件
+    this->map.boss->bossTimer.setInterval(2000);
 }
 
 MainScene::~MainScene()
@@ -49,8 +52,11 @@ void MainScene::playerGame()
         if(count==10)
             count=0;
         addCountOfMonsterCloseInMap(this->map);
+
+        this->map.boss->move(this->player);
+        this->map.boss->addAllCount();
         this->allMonsterCloseMoveInMap(this->map);
-        qDebug()<<"health="<<this->map.monsterClose[0]->getHeath();
+        //qDebug()<<this->map.boss->posX<<' '<<this->map.boss->posY;
 
     }
                 );
@@ -108,8 +114,26 @@ void MainScene::keyPressEvent(QKeyEvent *event)
         }
         break;
         case Qt::Key_J:
-            this->map.monsterClose[0]->setHeath(this->map.monsterClose[0]->getHeath()-1);
-            this->map.monsterClose[0]->underAttack();
+//            //怪物
+     //      this->map.monsterClose[0]->setHeath(this->map.monsterClose[0]->getHeath()-1);
+    //       this->map.monsterClose[0]->underAttack();
+
+        if(event->isAutoRepeat()&&!PressFlag)
+        {   //长按
+            PressFlag=true; //长按flag
+            //此处添加长按需要实现的代码;
+            this->player.isAttact = 0;
+        }
+        if(!PressFlag)
+        {   //按下
+            //怪物
+            this->map.checkAllAttack(this->player);
+            //人
+            this->player.isAttact = 1;
+            //攻击音乐
+            MusicPlay.playAttact();
+        }
+        break;
         default: break;
     }
     //QWidget::keyPressEvent(event);
@@ -126,6 +150,8 @@ void MainScene::keyReleaseEvent(QKeyEvent *event)
             //此处写短按需要实现的代码;
             //x速度清零
             player.walkHor(0);
+
+            player.face = 1;
         }
         else if(PressFlag&&!event->isAutoRepeat())
         {
@@ -142,6 +168,7 @@ void MainScene::keyReleaseEvent(QKeyEvent *event)
             //此处写短按需要实现的代码;
             //x速度清零
             player.walkHor(0);
+            player.face = 0;
         }
         else if(PressFlag&&!event->isAutoRepeat()){
             PressFlag=false;
@@ -161,7 +188,19 @@ void MainScene::keyReleaseEvent(QKeyEvent *event)
             player.isjumpshort = 0;
         }
         break;
+    case Qt::Key_J:
 
+    if(!PressFlag&&!event->isAutoRepeat())
+    {
+        //此处写短按需要实现的代码;
+        this->player.isAttact = 0;
+    }
+    else if(PressFlag&&!event->isAutoRepeat())
+    {
+        PressFlag=false;
+        this->player.isAttact = 0;
+    }
+    break;
         default: break;
     }
 }
@@ -182,12 +221,12 @@ void MainScene::paintEvent(QPaintEvent *event)
                            );
     }
 
-    painter.drawPixmap(this->player.p_x,this->player.p_y,PLAY_WIDTH,PLAY_HEIGHT,player.pixmap[count]);
+    //怪物
     for(i=0;i<this->map.numOfMonsterClose;i++)
     {
-        qDebug()<<"isInWalk="<<map.monsterClose[0]->isInWalk
+        /*qDebug()<<"isInWalk="<<map.monsterClose[0]->isInWalk
                <<" isInAttack="<<map.monsterClose[0]->isInAttack
-              <<" isUnderAttack="<<map.monsterClose[0]->isUnderAttack;  //测试怪物所处状态
+              <<" isUnderAttack="<<map.monsterClose[0]->isUnderAttack;*/  //测试怪物所处状态
 
         if(this->map.monsterClose[i]->isInWalk)
             painter.drawPixmap(this->map.monsterClose[i]->getPos_x(),
@@ -214,6 +253,43 @@ void MainScene::paintEvent(QPaintEvent *event)
                                this->map.monsterClose[i]->nothing
                                );
     }
+
+    //绘制boss,设置条件判断是否绘制
+    if(this->map.boss->isWalking)
+    {
+        painter.drawPixmap(this->map.boss->posX,
+                           this->map.boss->posY,
+                           BOSS_WIDTH,BOSS_HEIGHT,
+                           this->map.boss->walkPixmaps[this->map.boss->walkCount]
+                           );
+    }
+    else if(this->map.boss->isAttacking)
+        painter.drawPixmap(this->map.boss->posX,
+                           this->map.boss->posY,
+                           BOSS_WIDTH,BOSS_HEIGHT,
+                           this->map.boss->attackPixmaps[this->map.boss->attackCount]
+                           );
+    else if(this->map.boss->isDying)
+    {
+        painter.drawPixmap(this->map.boss->posX,
+                               this->map.boss->posY,
+                               BOSS_WIDTH,BOSS_HEIGHT,
+                               this->map.boss->dyingPixmaps[this->map.boss->dyingCount]
+                               );
+      if(this->map.boss->dyingCount==14)
+          this->map.boss=new Boss;
+    }
+    painter.drawPixmap(this->player.p_x + (player.face == 0?130:-10),this->player.p_y + 60, 80, 80,player.attactpixmap[player.isAttact]);
+
+    //人物
+    painter.drawPixmap(this->player.p_x,this->player.p_y,PLAY_WIDTH,PLAY_HEIGHT,player.pixmap[count]);
+
+    if(this->map.boss->sphereIsAttacking)
+        painter.drawPixmap(this->map.boss->bossSphere.posX,
+                           this->map.boss->bossSphere.posY,
+                           200,200,
+                           this->map.boss->bossSphere.spherePixmap
+                           );
 }
 //核心
 void MainScene::timerEvent(QTimerEvent *e)

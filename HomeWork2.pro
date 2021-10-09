@@ -34,7 +34,10 @@ SOURCES += \
     player.cpp \
     audio.cpp \
     monster.cpp \
-    monsterclose.cpp
+    monsterclose.cpp \
+    start.cpp \
+    boss.cpp \
+    sphere.cpp
 
 HEADERS += \
         mainscene.h \
@@ -45,8 +48,16 @@ HEADERS += \
     lookme.h \
     audio.h \
     monster.h \
-    monsterclose.h
+    monsterclose.h \
+    start.h \
+    boss.h \
+    sphere.h
 
 RESOURCES += \
     res.qrc
 CONFIG+=resources_big
+
+DISTFILES +=
+
+FORMS += \
+    start.ui

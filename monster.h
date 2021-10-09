@@ -3,6 +3,7 @@
 
 #include"config.h"
 #include<QPixmap>
+#include<audio.h>
 
 class Monster
 {
@@ -45,6 +46,9 @@ public:
     void setWalkPixmaps(int face);
     void setAttackPixmaps(int face);
     void setUnderAttackPixmaps(int face);
+
+    //设置音乐
+    Audio MusicPlay;
 
 private:
     double pos_x,pos_y;
